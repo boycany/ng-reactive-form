@@ -2,12 +2,11 @@
   margin-top: 30px;
 }
 
-input.ng-invalid.ng-touched {
-  border: 1px solid red;
-}
-
-.hobbies-controls {
+.navbar {
   display: flex;
   justify-content: space-around;
-  align-items: center;
+}
+
+.nav-item {
+  cursor: pointer;
 }

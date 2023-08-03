@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-xs-12">
+        <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+            <div class="form-group mb-3">
+                <label for="project-name">Project Name</label>
+                <input type="text" id="project-name" class="form-control" formControlName="project_name">
+                <span class="form-text text-danger">
+                    <span *ngIf="projectName.pending">Validating...</span>
+                    <span *ngIf="!projectName.pending && projectName.invalid && projectName.touched">
+                        Please enter a valid project name.</span>
+                </span>
+            </div>
+            <div class="form-group mb-3">
+                <label for="email">Email</label>
+                <input type="text" id="email" class="form-control" formControlName="email">
+                <span class="form-text text-danger" *ngIf="!email.valid && email.touched">
+                    Please enter a valid email.
+                </span>
+            </div>
+            <div class="form-group mb-3">
+                <label for="project-status">Project Status</label>
+                <select id="project-status" class="form-select" formControlName="project_status">
+                    <option *ngFor="let status of projectStatusOptions" [ngValue]="status">
+                        {{ status }}
+                    </option>
+                </select>
+            </div>
+            <div class="w-100 text-center mt-4">
+                <button class="btn btn-primary w-100" type="submit" [disabled]="!isFormValid">
+                    Submit
+                </button>
+            </div>
+        </form>
+        <hr>
+    </div>
+</div>
