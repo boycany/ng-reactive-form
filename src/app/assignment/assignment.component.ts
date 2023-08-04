@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { CustomValidators } from '../custom-validators';
 
 @Component({
   selector: 'app-assignment',
@@ -23,7 +24,11 @@ export class AssignmentComponent implements OnInit {
         Validators.required,
         this.validateForbiddenName.bind(this)
       ),
-      email: new FormControl(null, [Validators.required, Validators.email]),
+      email: new FormControl(null, [
+        Validators.required,
+        Validators.email,
+        CustomValidators.invalidEmail,
+      ]),
       project_status: new FormControl('Stable'),
     });
 
